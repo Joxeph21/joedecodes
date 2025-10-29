@@ -1,0 +1,22 @@
+export enum ICON {
+  MENU = "heroicons-outline:menu-alt-3",
+  CANCEL = "hugeicons:cancel-01",
+
+  TAILWIND = "devicon:tailwindcss",
+  ASTRO = "material-icon-theme:astro",
+  REACT = "material-icon-theme:react",
+  PYTHON = "material-icon-theme:python",
+  TYPESCRIPT = "skill-icons:typescript",
+  JAVASCRIPT = "skill-icons:javascript",
+  NEXTJS = "devicon:nextjs",
+  ANGULAR = "devicon:angular",
+  GSAP = "simple-icons:gsap",
+  FRAMER_MOTION = "tabler:brand-framer-motion",
+  SCSS = "vscode-icons:file-type-scss",
+  SUPABASE = "devicon:supabase",
+  FIREBASE = "devicon:firebase",
+  CYPRESS = "material-icon-theme:cypress",
+  JEST = "material-icon-theme:jest",
+  VITEST = "simple-icons:vitest",
+  FLARE = "ic:round-flare",
+}

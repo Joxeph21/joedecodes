@@ -1,5 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
-@theme{
-    --font-sans: "Inter", san-serif
+@theme {
+  --font-sans: "Inter", san-serif;
+  --color-background: #080808;
+  --color-foreground: #9d9d9d;
+  --color-primary: #fff42b;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.floating-tag {
+  will-change: transform !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+/* Custom Utility classes */
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .section-container {
+    @apply min-h-screen h-full p-10;
+  }
+}
+
+.head-title {
+  @apply text-left font-bold text-3xl uppercase lg:text-5xl text-white
 }

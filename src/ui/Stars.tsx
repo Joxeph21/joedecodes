@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
+const isMobileDevice = typeof window !== "undefined" && window.innerWidth < 768;
 interface StarsProps {
   count?: number;
   color?: string;
@@ -16,6 +16,7 @@ export default function Stars({
   color="white"
 }: StarsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const finalCount = isMobileDevice ? 20 : count;
 
   useGSAP(
     () => {
@@ -59,10 +60,10 @@ export default function Stars({
         }
       });
     },
-    { scope: containerRef, dependencies: [type] }
+    {scope: containerRef, dependencies: [type, finalCount] }
   );
 
-  const stars = Array.from({ length: count });
+  const stars = Array.from({ length: finalCount });
 
   return (
     <div

@@ -1,44 +1,12 @@
-import { useRef, useMemo } from "react";
+"use client";
+import { useRef, useMemo, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import Stars from "@/ui/Stars";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TAGS } from "@/utils/config";
 
-const TAGS = [
-  {
-    label: "# Developer",
-    info: "Because I love turning ideas into interactive experiences that people can actually feel through code.",
-  },
-  {
-    label: "# Creative",
-    info: "I don’t just build interfaces — I design emotions, flow, and moments that stay with the user.",
-  },
-  {
-    label: "# Visionary",
-    info: "I’m obsessed with where the web is going — I build with tomorrow in mind, not just today.",
-  },
-  {
-    label: "# Craftsman",
-    info: "Every line of code, every animation, every pixel matters. I believe great products are built with care.",
-  },
-  {
-    label: "# Motion",
-    info: "Motion isn’t decoration — it’s storytelling. GSAP and Framer Motion are my tools for creating life in interfaces.",
-  },
-  {
-    label: "# ProblemSolver",
-    info: "I enjoy breaking down complex problems into clean, scalable, and smart solutions that just work.",
-  },
-  {
-    label: "# Innovator",
-    info: "I constantly experiment — new tools, new patterns, new ideas. Growth happens when you push boundaries.",
-  },
-  {
-    label: "# Builder",
-    info: "I love starting from nothing — building products that are real, useful, and make an impact.",
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 const COLORS = [
   "bg-green-500/30",
@@ -54,18 +22,40 @@ const COLORS = [
 export default function Intro() {
   const container = useRef<HTMLDivElement | null>(null);
   const divRef = useRef<HTMLDivElement | null>(null);
+  const tagWrappers = useRef<Record<number, HTMLDivElement | null>>({});
+  const tagRefs = useRef<Record<number, HTMLSpanElement | null>>({});
+  const infoBoxes = useRef<Record<number, HTMLDivElement | null>>({});
+  const pausedTagData = useRef<
+    Record<
+      number,
+      | {
+          el: HTMLElement;
+          x: number;
+          y: number;
+          vx: number;
+          vy: number;
+          w: number;
+          h: number;
+        }
+      | undefined
+    >
+  >({});
+  const tagData = useRef<
+    {
+      el: HTMLElement;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      w: number;
+      h: number;
+    }[]
+  >([]);
+
   const isMobile = useRef(
     typeof window !== "undefined" &&
       (window.innerWidth < 768 || "ontouchstart" in window)
   );
-  const tagWrappers = useRef<Record<number, HTMLDivElement | null>>({});
-  const tagRefs = useRef<Record<number, HTMLSpanElement | null>>({});
-  const infoBoxes = useRef<Record<number, HTMLDivElement | null>>({});
-  const animations = useRef<Record<number, gsap.core.Tween[]>>({});
-  const tickerFns = useRef<(() => void)[]>([]);
-  const tagStates = useRef<
-    Array<{ x: number; y: number; vx: number; vy: number }>
-  >([]);
 
   useGSAP(() => {
     const containerEl = container.current;
@@ -73,101 +63,118 @@ export default function Intro() {
 
     const cw = window.innerWidth;
     const ch = window.innerHeight;
-    const isMobile = window.innerWidth < 768;
-
-    const textWidth = divRef.current?.scrollWidth ?? 0;
     const vw = window.innerWidth;
+    const textWidth = divRef.current?.scrollWidth ?? 0;
     const extra = vw;
-    // Adjust scroll distance for mobile
-    const scrollDistance = isMobile
-      ? Math.min(textWidth - vw, vw * 1.5)
-      : textWidth - vw + vw * 0.1;
-    const isMobileView = window.innerWidth < 768;
+    const scrollDistance = textWidth - vw + vw * 0.1;
 
+    // Horizontal scroll animation
     gsap.to(divRef.current, {
       x: -(scrollDistance + extra),
       ease: "none",
       scrollTrigger: {
         trigger: containerEl,
-        pin: true, // Disable pinning on mobile
+        pin: true,
+      
         scrub: 1,
         start: "top top",
-        end: `+=${
-          isMobileView
-            ? Math.min(scrollDistance + extra, window.innerWidth * 1.5)
-            : scrollDistance + extra
-        }`,
+        end: `+=${scrollDistance + extra}`,
+        onEnter: () => {
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        },
       },
     });
 
-    const animationSpeed = isMobile ? 1 : 2.5; // Reduce animation speed on mobile
+    const speed = 0.8;
+    tagData.current = [];
 
-    // Create a single animation ticker for all tags
-    const tagStates = new Map();
-
-    Object.entries(tagWrappers.current).forEach(([index, wrapper]) => {
+    Object.entries(tagWrappers.current).forEach(([_, wrapper]) => {
       if (!wrapper) return;
-
       const el = wrapper as HTMLElement;
-      const elRect = el.getBoundingClientRect();
-      const elWidth = elRect.width;
-      const elHeight = elRect.height;
+      const rect = el.getBoundingClientRect();
+      const x = gsap.utils.random(0, cw - rect.width);
+      const y = gsap.utils.random(0, ch - rect.height);
+      const vx = gsap.utils.random(-1, 1) * speed;
+      const vy = gsap.utils.random(-1, 1) * speed;
 
-      // Random starting position inside container
-      let x = gsap.utils.random(0, cw - elWidth);
-      let y = gsap.utils.random(0, ch - elHeight);
-
-      // Reduced velocity for mobile
-      let vx = gsap.utils.random(-1, 1) * animationSpeed;
-      let vy = gsap.utils.random(-1, 1) * animationSpeed;
-
-      gsap.set(el, { x, y, opacity: 1 });
-
-      const update = () => {
-        x += vx;
-        y += vy;
-
-        // Bounce horizontally
-        if (x <= 0 || x + elWidth >= cw) {
-          vx *= -1;
-          x = Math.max(0, Math.min(x, cw - elWidth));
-        }
-
-        // Bounce vertically
-        if (y <= 0 || y + elHeight >= ch) {
-          vy *= -1;
-          y = Math.max(0, Math.min(y, ch - elHeight));
-        }
-
-        gsap.set(el, { x, y });
-      };
-
-      gsap.ticker.add(update);
-      tickerFns.current.push(() => gsap.ticker.remove(update));
-
-      animations.current[+index] = [
-        {
-          pause: () => (vx = vy = 0),
-          resume: () => {
-            vx = gsap.utils.random(-1, 1) * 2.5;
-            vy = gsap.utils.random(-1, 1) * 2.5;
-          },
-        } as unknown as gsap.core.Tween,
-      ];
+      gsap.set(el, { x, y, opacity: 1, z: 0.01 });
+      tagData.current.push({
+        el,
+        x,
+        y,
+        vx,
+        vy,
+        w: rect.width,
+        h: rect.height,
+      });
     });
 
-    // Cleanup on unmount
+    const update = () => {
+      const cw = window.innerWidth;
+      const ch = window.innerHeight;
+
+      for (const d of tagData.current) {
+        d.x += d.vx;
+        d.y += d.vy;
+
+        if (d.x <= 0 || d.x + d.w >= cw) d.vx *= -1;
+        if (d.y <= 0 || d.y + d.h >= ch) d.vy *= -1;
+
+        gsap.set(d.el, { x: d.x, y: d.y });
+      }
+    };
+
+    gsap.ticker.add(update);
+
+
     return () => {
-      tickerFns.current.forEach((remove) => remove());
-      tickerFns.current = [];
+      gsap.ticker.remove(update);
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    console.log(window.location.hash)
+
+    const ensureIntroAtTop = () => {
+      if (window.location.hash === "#intro" && container.current) {
+        const top = container.current.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
+        gsap.set(divRef.current, {xPercent: 0})
+
+        requestAnimationFrame(() => {
+          try {
+            ScrollTrigger.refresh(true);
+          } catch (e) {
+          }
+        });
+      }
+    };
+
+    setTimeout(ensureIntroAtTop, 0);
+
+    window.addEventListener("hashchange", ensureIntroAtTop);
+    return () => window.removeEventListener("hashchange", ensureIntroAtTop);
+  }, []);
+
+  // Hover handlers
   const handleMouseEnter = (i: number) => {
-    animations.current[i]?.forEach((a) => a.pause());
     const tag = tagRefs.current[i];
     const box = infoBoxes.current[i];
+
+    const index = tagData.current.findIndex(
+      (d) => d.el === tagWrappers.current[i]
+    );
+    if (index !== -1) {
+      pausedTagData.current[i] = tagData.current[index];
+
+      tagData.current.splice(index, 1);
+    }
 
     if (tag) {
       gsap.to(tag, {
@@ -180,15 +187,57 @@ export default function Intro() {
 
     if (box) {
       gsap.killTweensOf(box);
-      gsap.set(box, { opacity: 0, y: 10, display: "block" });
-      gsap.to(box, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+      gsap.set(box, { opacity: 0, y: 10, display: "block", clearProps: "x" });
+
+      const rect = box.getBoundingClientRect();
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const padding = 15;
+      let adjustX = 0;
+      let isFlipped = false;
+      if (rect.bottom + padding > vh) {
+        isFlipped = true;
+      }
+
+      if (rect.left < padding) {
+        adjustX = padding - rect.left;
+      } else if (rect.right > vw - padding) {
+        adjustX = vw - padding - rect.right;
+      }
+
+      if (isFlipped) {
+        box.classList.remove("top-full", "mt-2");
+        box.classList.add("bottom-full", "mb-2");
+      } else {
+        box.classList.remove("bottom-full", "mb-2");
+        box.classList.add("top-full", "mt-2");
+      }
+
+      const startY = isFlipped ? -10 : 10;
+      const endY = 0;
+
+      gsap.set(box, { opacity: 0, y: startY, x: adjustX, display: "block" });
+
+      gsap.to(box, { opacity: 1, y: endY, duration: 0.4, ease: "power2.out" });
     }
   };
 
   const handleMouseLeave = (i: number) => {
-    animations.current[i]?.forEach((a) => a.resume());
     const tag = tagRefs.current[i];
     const box = infoBoxes.current[i];
+
+    const pausedData = pausedTagData.current[i];
+    if (pausedData) {
+      const currentX = gsap.getProperty(pausedData.el, "x") as number;
+      const currentY = gsap.getProperty(pausedData.el, "y") as number;
+
+      pausedData.x = currentX;
+      pausedData.y = currentY;
+
+      tagData.current.push(pausedData);
+
+      pausedTagData.current[i] = undefined;
+    }
 
     if (tag) {
       gsap.to(tag, {
@@ -215,12 +264,12 @@ export default function Intro() {
 
   return (
     <section
+      id="intro"
       ref={container}
-      className=" w-screen h-screen fixed overflow-hidden bg-black"
+      className="w-screen min-h-screen relative  overflow-hidden bg-black"
     >
       <Stars />
 
-      {/* Use fewer tags on mobile for better performance */}
       {TAGS.map((tag, i) => {
         const color = COLORS[i % COLORS.length];
         return (
@@ -235,16 +284,21 @@ export default function Intro() {
               ref={(el) => {
                 tagRefs.current[i] = el;
               }}
+              // onClick={() => handleMouseEnter(i)}
               onMouseEnter={() => handleMouseEnter(i)}
               onMouseLeave={() => handleMouseLeave(i)}
-              className={`floating-tag cursor-pointer text-white text-sm font-medium px-4 py-2 rounded-full 
-                backdrop-blur-none sm:backdrop-blur-md ${color} border border-white/20 shadow-none sm:shadow-[0_0_15px_rgba(255,255,255,0.15)]`}
+              className={`floating-tag  cursor-pointer select-none text-white text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 
+                ${
+                  !isMobile.current
+                    ? "backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.15)]"
+                    : ""
+                } ${color}`}
             >
               {tag.label}
             </span>
 
-            {/* Info Box */}
             <div
+              key={i * Date.now()}
               ref={(el) => {
                 infoBoxes.current[i] = el;
               }}
@@ -262,7 +316,7 @@ export default function Intro() {
         ref={divRef}
         className="absolute inset-0 flex items-center ml-[10vw]"
       >
-        <h1 className="whitespace-nowrap text-[25vw] sm:text-[30vw] font-bold uppercase text-white">
+        <h1 className="whitespace-nowrap select-none text-[30vh] lg:text-[30vw] font-extrabold uppercase text-white">
           I am Joseph Adenugba
         </h1>
       </div>
