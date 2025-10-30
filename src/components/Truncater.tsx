@@ -49,7 +49,7 @@ export default function Truncater({ text, limit = WORD_LIMIT }: TProps) {
       {isTruncated && (
         <button
           onClick={toggleText}
-          className="text-primary hover:underline font-medium transition-colors"
+          className="text-primary cursor-pointer hover:underline font-medium transition-colors"
         >
           {isExpanded ? "View less" : "View more"}
         </button>

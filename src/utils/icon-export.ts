@@ -1,8 +1,9 @@
 export enum ICON {
   MENU = "heroicons-outline:menu-alt-3",
+  FLARE = "ic:round-flare",
   CANCEL = "hugeicons:cancel-01",
 
-  TAILWIND = "devicon:tailwindcss",
+TAILWIND = "devicon:tailwindcss",
   ASTRO = "material-icon-theme:astro",
   REACT = "material-icon-theme:react",
   PYTHON = "material-icon-theme:python",
@@ -18,5 +19,14 @@ export enum ICON {
   CYPRESS = "material-icon-theme:cypress",
   JEST = "material-icon-theme:jest",
   VITEST = "simple-icons:vitest",
-  FLARE = "ic:round-flare",
+  GIT="devicon:git",
+  REACT_QUERY="simple-icons:reactquery",
+  GITHUB_ACTIONS="devicon:githubactions",
+  BOOTSTRAP="devicon:bootstrap",
+  ZUSTAND="devicon:zustand",
+  REDUX="devicon:redux",
+  VERCEL="skill-icons:vercel-light",
+  NETLIFY="material-icon-theme:netlify",
+  THREE="skill-icons:threejs-light",
+  NODE="devicon:nodejs",
 }

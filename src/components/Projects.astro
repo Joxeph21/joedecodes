@@ -19,7 +19,7 @@ import Truncater from "@/components/Truncater"
          <span class="px-3 py-1 bg-primary/10 text-primary/50 hover:bg-primary cursor-pointer duration-200 transition-colors hover:text-background ease-in-out font-medium rounded-full text-xs">{stack}</span>
        ))}
       </div>
-      <a href={project.href} target="_blank" rel="noopener noreferrer" class="text-primary cursor-pointer font-medium hover:underline">View Project →</a>
+{project.href &&      <a href={project.href} target="_blank" rel="noopener noreferrer" class="text-primary cursor-pointer font-medium hover:underline">View Project →</a>}
     </article>
 
     <!-- Scrolling Images -->

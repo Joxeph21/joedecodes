@@ -1,5 +1,32 @@
 import { ICON } from "./icon-export";
 
+export const USER = {
+  TITLE: "",
+  NAME: "Joseph Adenugba",
+  DESCRIPTION: ` Hi, I'm Joseph Adenugba (Joe), i'm a frontend developer with over 4
+            years of experience in building user-friendly web applications. I am
+            passionate about what i do and always eager to learn new
+            technologies and improve my skills. I specialize in not just
+            building but in creating meaningful user experiences. I approach
+            every project as if it’s my own, aiming for that “wow” factor that
+            makes people say, “You built this?” I value collaboration, team work
+            and communication, as it is a key factor in production. Let's work
+            together to bring your ideas to life! 😉`,
+  SITE_URL: "https://joedecodes.vercel.app",
+  KEYWORDS: [
+    "Joseph Adenugba",
+    "joeDecodes",
+    "Creative Frontend Developer",
+    "Motion Developer",
+    "Web Developer",
+    "React Developer",
+    "Hire Frontend Developer",
+    "Experienced developer",
+    "Frontend web developer",
+    "Problem Solver",
+  ],
+};
+
 export const TAGS = [
   {
     label: "# Developer",
@@ -48,6 +75,45 @@ export const PROJECTS = [
       "/projects/project1.3.png",
     ],
   },
+  {
+    title: "GoChannel",
+    href: "https://www.gochannel.live/",
+    description:
+      "GoChannel is a livestream automation platform that allows creators and businesses to upload pre-recorded videos and schedule them to stream live across multiple platforms like YouTube, Facebook, and TikTok simultaneously. It simplifies the entire process — from setting up and scheduling broadcasts to analyzing performance afterward — helping users maximize their reach, maintain consistent audience engagement, and present live experiences without actually going live in real time.",
+    stacks: [
+      "NextJs",
+      "React",
+      "TypeScript",
+      "Motion",
+      "UppyJs",
+      "React Query",
+      "Tailwind",
+    ],
+    images: [
+      "/projects/project2.1.png",
+      "/projects/project2.2.png",
+      "/projects/project2.3.png",
+    ],
+  },
+  {
+    title: "Trippicker",
+    href: "https://trippicker.com/",
+    description:
+      "Trippicker, Allegedly is the first Web3 powered ride-hailing service, globally! Book rides easily, earn rewards as you go, and explore cities like a local by discovering top hotels, lounges, restaurants, and more, all in one smart travel app. TripPicker enables users to book rides, send packages, rent vehicles, get personal security, pay with ease, earn rewards, and even find meaningful relationships, all from a single app. Whether you're commuting to work, exploring a new neighborhood, attending events, or meeting someone new, TripPicker is your one-stop solution for everyday movement.",
+    stacks: [
+      "NextJs",
+      "React",
+      "TypeScript",
+      "Motion",
+      "React Query",
+      "Tailwind",
+    ],
+    images: [
+      "/projects/project3.1.png",
+      "/projects/project3.2.png",
+      "/projects/project3.3.png",
+    ],
+  },
 ];
 
 export const stats = [
@@ -75,4 +141,63 @@ export const techStack = [
   { label: "Cypress", icon: ICON.CYPRESS },
   { label: "Jest", icon: ICON.JEST },
   { label: "Vitest", icon: ICON.VITEST },
+];
+
+export const STACK_TAGS = [
+  {
+    title: "Frontend",
+    items: [
+      { label: "React", icon: ICON.REACT },
+      { label: "Next.js", icon: ICON.NEXTJS },
+      { label: "Astro", icon: ICON.ASTRO },
+      { label: "Angular", icon: ICON.ANGULAR },
+      { label: "TypeScript", icon: ICON.TYPESCRIPT },
+      { label: "JavaScript", icon: ICON.JAVASCRIPT },
+      { label: "Tailwind CSS", icon: ICON.TAILWIND },
+      { label: "SCSS", icon: ICON.SCSS },
+      { label: "Bootstrap", icon: ICON.BOOTSTRAP },
+    ],
+  },
+  {
+    title: "Animation & 3D",
+    items: [
+      { label: "GSAP", icon: ICON.GSAP },
+      { label: "Framer Motion", icon: ICON.FRAMER_MOTION },
+      { label: "Three.js", icon: ICON.THREE },
+    ],
+  },
+  {
+    title: "State Management",
+    items: [
+      { label: "React Query", icon: ICON.REACT_QUERY },
+      { label: "Zustand", icon: ICON.ZUSTAND },
+      { label: "Redux", icon: ICON.REDUX },
+    ],
+  },
+  {
+    title: "Backend & Databases",
+    items: [
+      { label: "Supabase", icon: ICON.SUPABASE },
+      { label: "Firebase", icon: ICON.FIREBASE },
+      { label: "Python", icon: ICON.PYTHON },
+      { label: "NodeJS", icon: ICON.NODE },
+    ],
+  },
+  {
+    title: "Testing & Tooling",
+    items: [
+      { label: "Cypress", icon: ICON.CYPRESS },
+      { label: "Jest", icon: ICON.JEST },
+      { label: "Vitest", icon: ICON.VITEST },
+    ],
+  },
+  {
+    title: "Hosting & Deployment",
+    items: [
+      { label: "Git", icon: ICON.GIT },
+      { label: "GitHub Actions", icon: ICON.GITHUB_ACTIONS },
+      { label: "Vercel", icon: ICON.VERCEL },
+      { label: "Netlify", icon: ICON.NETLIFY },
+    ],
+  },
 ];

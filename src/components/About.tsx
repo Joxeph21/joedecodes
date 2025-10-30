@@ -7,7 +7,7 @@ import Marquee from "react-fast-marquee";
 import { Icon } from "@iconify/react";
 import { ICON } from "@/utils/icon-export";
 import SideModal from "./SideModal";
-import { stats, techStack } from "@/utils/config";
+import { stats, techStack, USER } from "@/utils/config";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -138,7 +138,7 @@ export default function About() {
 
   return (
     <section
-      id="about-me"
+    id="about-me"
       className="bg-background text-foreground section-container"
     >
       <h2 ref={titleRef} className="head-title ">
@@ -155,16 +155,8 @@ export default function About() {
             <br /> developer
           </h3>
 
-          <p ref={pRef}>
-            Hi, I'm Joseph Adenugba (Joe), i'm a frontend developer with over 4
-            years of experience in building user-friendly web applications. I am
-            passionate about what i do and always eager to learn new
-            technologies and improve my skills. I specialize in not just
-            building but in creating meaningful user experiences. I approach
-            every project as if it’s my own, aiming for that “wow” factor that
-            makes people say, “You built this?” I value collaboration, team work
-            and communication, as it is a key factor in production. Let's work
-            together to bring your ideas to life! 😉
+          <p className="2xl:text-base" ref={pRef}>
+         {USER.DESCRIPTION}
           </p>
 
           <span className="uppercase text-xs font-bold text-primary">
@@ -225,7 +217,7 @@ export default function About() {
               className="relative inline-block mx-2 py-1 cursor-pointer space-y-3 lg:mx-5 hover:z-10 group"
             >
               {/* Icon */}
-              <div className="md:grayscale mx-auto w-fit hover:grayscale-0 transition-all duration-300">
+              <div className="md:grayscale mx-auto w-fit group-hover:grayscale-0 transition-all duration-300">
                 <Icon
                   icon={stack.icon}
                   fontSize={60}
@@ -242,7 +234,7 @@ export default function About() {
         </Marquee>
       </section>
 
-      <p className="text-center  text-4xl  lg:text-5xl font-light flex flex-wrap justify-center gap-x-2 leading-snug">
+      <p className="text-center  text-4xl  lg:text-5xl font-light flex flex-wrap justify-center gap-x-2 leading-snug my-10">
         {"I believe challenges are opportunities to create something better. For me, problem-solving is more than a skill — it’s an ART."
           .split(" ")
           .map((word, i) => (
@@ -255,7 +247,7 @@ export default function About() {
           ))}
       </p>
 
-      <hr className="my-8" />
+      <hr className="my-10" />
     </section>
   );
 }

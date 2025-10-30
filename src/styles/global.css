@@ -37,3 +37,12 @@
 .head-title {
   @apply text-left font-bold text-3xl uppercase lg:text-5xl text-white
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

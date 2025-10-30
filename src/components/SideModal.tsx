@@ -1,5 +1,4 @@
-"use client";
-import { techStack } from "@/utils/config";
+import { STACK_TAGS } from "@/utils/config";
 import { ICON } from "@/utils/icon-export";
 import { useGSAP } from "@gsap/react";
 import { Icon } from "@iconify/react";
@@ -44,18 +43,23 @@ export default function SideModal({ close, isOpen }: ModalProps) {
             ease: "power3.out",
           }
         );
+
+        // Optional: animate category sections
+        gsap.from(".stack-category", {
+          opacity: 0,
+          y: 20,
+          duration: 0.4,
+          stagger: 0.1,
+          ease: "power2.out",
+          delay: 0.3,
+        });
       }
     },
     { dependencies: [isOpen] }
   );
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
+    document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -72,6 +76,7 @@ export default function SideModal({ close, isOpen }: ModalProps) {
           id="menu"
           className="lg:w-[30vw] w-[95%] bg-background relative h-full overflow-y-auto scrollbar-hide"
         >
+          {/* Close Button */}
           <button
             aria-checked={isOpen}
             onClick={handleClose}
@@ -84,17 +89,35 @@ export default function SideModal({ close, isOpen }: ModalProps) {
               className="shrink-0 text-white duration-150 ease-in transition-colors"
             />
           </button>
-          <section className="w-full mt-15 p-3  space-y-5">
-            <h4 className="text-2xl text-white flex-center gap-1 w-fit font-bold">
-              <Icon icon={ICON.FLARE} className="animate-spin" />
+
+          {/* Content */}
+          <section className="w-full mt-15 p-5 space-y-8">
+            <h4 className="text-2xl text-white flex-center gap-2 w-fit font-bold">
+              <Icon icon={ICON.FLARE} className="animate-spin text-primary" />
               Tech Stacks
             </h4>
-            <div className="grid grid-cols-3 gap-5 ml-6">
-              {techStack.map((stack, index) => (
-                <figure key={index} className=" col-center gap-3">
-                 <Icon icon={stack.icon} fontSize={50} />
-                 <figcaption>{stack.label}</figcaption>
-                </figure>
+
+            {/* Categories */}
+            <div className="space-y-8">
+              {STACK_TAGS.map((category, i) => (
+                <div key={i} className="stack-category">
+                  <h5 className="text-lg font-semibold text-white mb-4">
+                    {category.title}
+                  </h5>
+                  <div className="grid grid-cols-3 gap-6 ml-3">
+                    {category.items.map((stack, index) => (
+                      <figure
+                        key={index}
+                        className="col-center gap-2 cursor-pointer hover:bg-[#212121]/50 p-1 text-center text-foreground rounded-sm lg:grayscale hover:grayscale-0 hover:text-white transition-all ease-in duration-200"
+                      >
+                        <Icon icon={stack.icon} fontSize={40} />
+                        <figcaption className="text-sm font-medium">
+                          {stack.label}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </section>

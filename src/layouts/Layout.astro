@@ -1,5 +1,20 @@
 ---
 import "@/styles/global.css";
+import { USER } from "@/utils/config.ts";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+}
+
+const {
+title= USER.TITLE ?? USER.NAME,
+description= USER.DESCRIPTION,
+image= `${USER.SITE_URL}/user.jpg`,
+url= USER.SITE_URL,
+} = Astro.props
 ---
 
 <!doctype html>
@@ -12,9 +27,27 @@ import "@/styles/global.css";
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <title>Joseph Adenugba</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={title} />
+
+    <meta name="author" content={USER.NAME} />
+  <meta name="robots" content="index, follow" />
   </head>
-  <body class="text-sm">
+  <body class="text-sm w-full bg-background">
     <slot />
   </body>
 </html>
