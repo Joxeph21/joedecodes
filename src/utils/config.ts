@@ -201,3 +201,43 @@ export const STACK_TAGS = [
     ],
   },
 ];
+
+
+export const services = [
+  {
+    title: "Frontend Development",
+    icon: ICON.FRONTEND,
+    short: "I build responsive, fast, and interactive web apps using React, Next.js, and modern tools.",
+    rich: "I turn your ideas into user interactive web apps. I focus on clean, reusable components, accessibility, and performance so your app feels snappy and is easy to maintain. Whether it’s a simple site or a complex dashboard, I’ll deliver something reliable and delightful.",
+  },
+  {
+    title: "UI to Code",
+    icon: ICON.UI,
+    short: "Turning designs into pixel-perfect, responsive interfaces, mirroring exactly the design animations.",
+    rich: "Share your Figma or mockups and I’ll bring them to life. I pay attention to spacing, typography, and micro-interactions so the final product looks and feels like the design.",
+  },
+  {
+    title: "CMS Integration",
+    icon: ICON.WORDPRESS,
+    short: "Connecting headless CMS (Shopify, Wordpress) so you can manage content without a developer.",
+    rich: "I’ll structure your content models, connect the CMS to the frontend, and make publishing straightforward. The result is a dynamic, easy-to-update website that keeps content management right in your hands while staying simple, secure and fast.",
+  },
+  {
+    title: "SEO & Performance",
+    icon: ICON.SEO,
+    short: "Optimizing load speed, accessibility, and search visibility for real-world results.",
+    rich: "I improve Core Web Vitals, trim bundle sizes, and use SSR or static generation where it helps. I also handle metadata, Open Graph tags, and semantic HTML so your site is discoverable and pleasant to use on any device.",
+  },
+  {
+    title: "Animations & Motion",
+    icon: ICON.MOTION,
+    short: "Adding purposeful, performance-minded animations that enhance the experience.",
+    rich: "I use GSAP and Framer Motion to craft animations that attract attention and make interactions smooth and easy. Animations are designed with performance in mind so they feel natural without hurting load times or responsiveness.",
+  },
+  {
+    title: "Ongoing Maintenance",
+    icon: ICON.MAINTENANCE,
+    short: "Keeping your site updated, secure, and continuously improved after launch.",
+    rich: "I offer ongoing support — updates, bug fixes, performance tweaks, and feature additions. I can also set up CI/CD and automation so deployments are smooth and predictable, letting you focus on growing your product.",
+  },
+];

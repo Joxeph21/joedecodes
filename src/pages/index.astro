@@ -2,20 +2,27 @@
 import Intro from "@/components/Intro";
 import Layout from "../layouts/Layout.astro";
 import NavLayout from "@/components/NavLayout";
-import Projects from "@/components/Projects.astro";
+import Projects from "@/components/Projects";
 import About from "@/components/About";
+import Services from "@/components/Services";
+import HireMe from "@/components/HireMe";
+import Testimonials from "@/components/Testimonials";
 ---
 
 <Layout>
-  <div class="w-full h-full min-h-screen relative">
+  <div class="w-full h-full min-h-screen relative scroll-smooth">
     <NavLayout client:only />
-    <section class="overflow-x-hidden">
+    <!-- <section class="overflow-x-hidden"> -->
       <Intro client:only />
-    </section>
+    <!-- </section> -->
     <section class=" max-w-[1920px] mx-auto w-full h-full">
 
       <About client:only />
-      <Projects />
+      <Projects client:only />
+      <Services client:only />
+      <Testimonials client:only />
+      <HireMe client:only/>
     </section>
   </div>
 </Layout>
+

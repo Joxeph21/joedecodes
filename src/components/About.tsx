@@ -8,13 +8,13 @@ import { Icon } from "@iconify/react";
 import { ICON } from "@/utils/icon-export";
 import SideModal from "./SideModal";
 import { stats, techStack, USER } from "@/utils/config";
+import Popper from "./Popper";
+import HireContent from "@/ui/HireContent";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-
-
 export default function About() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const h3Ref = useRef<HTMLHeadingElement | null>(null);
   const pRef = useRef<HTMLParagraphElement | null>(null);
@@ -138,7 +138,7 @@ export default function About() {
 
   return (
     <section
-    id="about-me"
+      id="about-me"
       className="bg-background text-foreground section-container"
     >
       <h2 ref={titleRef} className="head-title ">
@@ -156,12 +156,28 @@ export default function About() {
           </h3>
 
           <p className="2xl:text-base" ref={pRef}>
-         {USER.DESCRIPTION}
+            {USER.DESCRIPTION}
           </p>
 
           <span className="uppercase text-xs font-bold text-primary">
             Your ideas + my code = #NextBigThing
           </span>
+
+          <div className="mt-4 flex items-center gap-3">
+            <a
+              href="/cv.pdf"
+              download
+              className="inline-flex items-center cursor-pointer px-6 py-3 rounded-full border border-white text-white font-semibold shadow hover:-translate-y-0.5 transition-transform hover:bg-white hover:text-background focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+            >
+              Download CV
+            </a>
+            <button
+              onClick={() => setIsOpen(true)}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#A7F32A] text-black font-semibold rounded-full hover:bg-[#CFFF3A] transition-all transform hover:-translate-y-0.5 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#A7F32A]/40"
+            >
+              Hire Me
+            </button>
+          </div>
         </article>
 
         <figure className="mx-auto w-full lg:w-96 overflow-hidden rounded-2xl relative aspect-square">
@@ -199,7 +215,10 @@ export default function About() {
             Tech Stacks
           </h4>
 
-          <button onClick={() => setIsOpen(true)} className="text-foreground font-medium ring-1 ring-foreground rounded-full px-4 py-1 text-xs hover:bg-primary hover:text-background hover:ring-black cursor-pointer transition-colors duration-300">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="text-foreground font-medium ring-1 ring-foreground rounded-full px-4 py-1 text-xs hover:bg-primary hover:text-background hover:ring-black cursor-pointer transition-colors duration-300"
+          >
             View All
           </button>
         </div>
@@ -240,7 +259,9 @@ export default function About() {
           .map((word, i) => (
             <span
               key={i}
-              className={`${word === "ART." ? "text-primary font-bold" : "text-foreground"} cursor-pointer hover:text-white transition-colors duration-300`}
+              className={`${
+                word === "ART." ? "text-primary font-bold" : "text-foreground"
+              } cursor-pointer hover:text-white transition-colors duration-300`}
             >
               {word}
             </span>
@@ -248,6 +269,10 @@ export default function About() {
       </p>
 
       <hr className="my-10" />
+
+      <Popper isOpen={isOpen} close={() => setIsOpen(false)}>
+        <HireContent />
+      </Popper>
     </section>
   );
 }

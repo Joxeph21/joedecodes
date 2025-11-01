@@ -18,6 +18,10 @@ const navLinks = [
     title: "Projects",
     href: "#projects",
   },
+  {
+    title: "Services",
+    href: "#services",
+  },
 ];
 
 export default function Nav({

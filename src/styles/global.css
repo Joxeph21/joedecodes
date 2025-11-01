@@ -3,6 +3,7 @@
 
 @theme {
   --font-sans: "Inter", san-serif;
+  --font-handlee: "Handlee", cursive;
   --color-background: #080808;
   --color-foreground: #9d9d9d;
   --color-primary: #fff42b;
@@ -30,7 +31,7 @@
   }
 
   .section-container {
-    @apply min-h-screen h-full p-10;
+    @apply min-h-screen h-full p-5 lg:p-10 ;
   }
 }
 
