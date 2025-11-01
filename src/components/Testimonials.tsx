@@ -8,6 +8,14 @@ export default function Testimonials() {
       id="testimonials"
       className="bg-background text-foreground flex flex-col gap-24 relative section-container"
     >
-      <h2 className="head-title"># Happy Clients</h2></section>
+      <h2 className="head-title"># Happy Clients</h2>
+      
+      
+    
+      
+      </section>
+
+
+
   )
 }

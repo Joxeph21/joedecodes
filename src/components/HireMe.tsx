@@ -56,7 +56,7 @@ export default function HireMe() {
     <section className="relative py-20 px-6 bg-[#EAEAD9]">
       <div className="max-w-5xl mx-auto">
         {/* CTA Card */}
-        <div className="rounded-3xl bg-[#1C1C1C] text-white px-8 py-16 shadow-2xl relative overflow-hidden">
+        <div className="rounded-3xl bg-[#1C1C1C] text-white px-8 pb-30 md:pb-16 py-16 shadow-2xl relative overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
 
           <div className="relative text-center">
@@ -71,7 +71,7 @@ export default function HireMe() {
               short, no‑pressure proposal within 48 hours.
             </p>
 
-            <div className="mt-8 flex-center w-fit mx-auto relative gap-4">
+            <div className="mt-8 flex items-center justify-center flex-col md:flex-row w-fit mx-auto relative gap-4">
               <a
                 href="https://calendly.com/codewithjoxeph/project-discussion"
                 target="_blank"
@@ -86,14 +86,14 @@ export default function HireMe() {
                 Hire Me
               </button>
 
-              <figure className="absolute flex-center -bottom-12 -right-32 ">
+              <figure className="absolute flex-center -bottom-15 md:-bottom-12 -right-15 md:-right-32 ">
                 <img
                   src="/arrow.svg"
                   className="transform scale-x-[-1]"
                   aria-hidden
                   alt=""
                 />
-                <figcaption className="text-center text-base text-foreground font-handlee max-w-32">
+                <figcaption className="text-center mt-3 text-base text-foreground font-handlee max-w-32">
                   The Right step starts here 😉
                 </figcaption>
               </figure>

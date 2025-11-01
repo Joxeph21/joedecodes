@@ -163,7 +163,7 @@ export default function About() {
             Your ideas + my code = #NextBigThing
           </span>
 
-          <div className="mt-4 flex items-center gap-3">
+          <div className="mt-6 flex items-center justify-center md:justify-start gap-3">
             <a
               href="/cv.pdf"
               download
