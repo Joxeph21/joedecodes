@@ -14,7 +14,7 @@ import HireContent from "@/ui/HireContent";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function About() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [status, setStatus] = useState<"popup" | "sidebar" | "idle">("idle");
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const h3Ref = useRef<HTMLHeadingElement | null>(null);
   const pRef = useRef<HTMLParagraphElement | null>(null);
@@ -172,7 +172,7 @@ export default function About() {
               Download CV
             </a>
             <button
-              onClick={() => setIsOpen(true)}
+              onClick={() => setStatus("popup")}
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#A7F32A] text-black font-semibold rounded-full hover:bg-[#CFFF3A] transition-all transform hover:-translate-y-0.5 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#A7F32A]/40"
             >
               Hire Me
@@ -216,14 +216,14 @@ export default function About() {
           </h4>
 
           <button
-            onClick={() => setIsOpen(true)}
+            onClick={() => setStatus("sidebar")}
             className="text-foreground font-medium ring-1 ring-foreground rounded-full px-4 py-1 text-xs hover:bg-primary hover:text-background hover:ring-black cursor-pointer transition-colors duration-300"
           >
             View All
           </button>
         </div>
 
-        <SideModal isOpen={isOpen} close={() => setIsOpen(false)} />
+        <SideModal isOpen={status === "sidebar"} close={() => setStatus("idle")} />
 
         <Marquee
           className=" overflow-hidden h-max"
@@ -270,7 +270,7 @@ export default function About() {
 
       <hr className="my-10" />
 
-      <Popper isOpen={isOpen} close={() => setIsOpen(false)}>
+      <Popper isOpen={status === "popup"} close={() => setStatus("idle")}>
         <HireContent />
       </Popper>
     </section>
