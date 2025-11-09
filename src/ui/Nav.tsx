@@ -5,6 +5,21 @@ import gsap from "gsap";
 import { Activity } from "react";
 import { useRef } from "react";
 
+const socials = [
+  {
+    icon: ICON.GITHUB,
+    url: "https://github.com/Joxeph21",
+  },
+  {
+    icon: ICON.LINKEDIN2,
+    url: "https://www.linkedin.com/in/joseph-adenugba21/",
+  },
+  {
+    icon: ICON.WHATSAPP,
+    url: "https://wa.me/+2349036909765",
+  },
+];
+
 const navLinks = [
   {
     title: "Home",
@@ -21,6 +36,10 @@ const navLinks = [
   {
     title: "Services",
     href: "#services",
+  },
+  {
+    title: "Reviews",
+    href: "#testimonials",
   },
 ];
 
@@ -115,7 +134,7 @@ export default function Nav({
     <Activity mode={navOpen ? "visible" : "hidden"}>
       <nav
         id="navbar"
-        className="w-full h-screen fixed inset-0 z-100 bg-primary pt-10 px-5 lg:p-10 text-background"
+        className="w-full h-screen fixed flex flex-col inset-0 z-100 bg-primary pt-10 px-5 lg:p-10 text-background"
       >
         <button
           aria-checked={navOpen}
@@ -142,6 +161,13 @@ export default function Nav({
             >
               {el.title}
               <span className="underline absolute left-0 bottom-0 h-2 rounded-full bg-background w-full origin-left scale-x-0" />
+            </a>
+          ))}
+        </ul>
+        <ul className="flex-center self-end w-fit gap-10">
+          {socials.map((el) => (
+            <a href={el.url} target="_blank" key={el.url}>
+              <Icon icon={el.icon} fontSize={50} />
             </a>
           ))}
         </ul>

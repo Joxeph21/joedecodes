@@ -42,5 +42,6 @@ export enum ICON {
   UI = "gg:ui-kit",
   SEO = "tabler:seo",
   MOTION = "mdi:motion-outline",
-  MAINTENANCE="icon-park-twotone:setting-web"
+  MAINTENANCE="icon-park-twotone:setting-web",
+  GITHUB="mdi:github"
 }
