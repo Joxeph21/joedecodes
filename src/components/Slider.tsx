@@ -8,7 +8,7 @@ export default function Slider({ reviews }: { reviews: Props[] }) {
   const [selected, setSelected] = useState<Props | null>(null);
 
   return (
-    <section className="w-full col-center p-3 gap-3">
+    <section className="w-full col-center md:p-3 gap-3">
       <Activity mode={!selected ? "hidden" : "visible"}>
         <Modal selected={selected} close={() => setSelected(null)} />
       </Activity>

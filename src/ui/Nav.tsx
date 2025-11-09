@@ -134,7 +134,7 @@ export default function Nav({
     <Activity mode={navOpen ? "visible" : "hidden"}>
       <nav
         id="navbar"
-        className="w-full h-screen fixed flex flex-col inset-0 z-100 bg-primary pt-10 px-5 lg:p-10 text-background"
+        className="w-full h-screen fixed flex  flex-col inset-0 z-100 bg-primary pt-10 px-5 lg:p-10 text-background"
       >
         <button
           aria-checked={navOpen}
@@ -149,7 +149,7 @@ export default function Nav({
           />
         </button>
 
-        <ul className="flex flex-col my-auto gap-5">
+        <ul className="flex flex-col md:my-auto  gap-5">
           {navLinks.map((el) => (
             <a
               href={el.href}
@@ -164,7 +164,7 @@ export default function Nav({
             </a>
           ))}
         </ul>
-        <ul className="flex-center self-end w-fit gap-10">
+        <ul className="flex-center mt-auto mb-4 self-end w-fit gap-10">
           {socials.map((el) => (
             <a href={el.url} target="_blank" key={el.url}>
               <Icon icon={el.icon} fontSize={50} />
