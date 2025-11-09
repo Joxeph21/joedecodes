@@ -132,6 +132,32 @@ export default function Projects() {
           </figure>
         </section>
       ))}
+     {/* <a
+  href="/projects"
+  className="
+    inline-block
+    mt-8
+    px-6 py-3
+    bg-accent
+    text-background
+    font-semibold
+    rounded-lg
+    shadow-md
+    hover:bg-accent/90
+    hover:shadow-lg
+    transition-all
+    duration-300
+    focus:outline-none
+    focus:ring-2
+    focus:ring-accent/60
+    focus:ring-offset-2
+    text-center
+    w-fit
+  "
+>
+  View More Projects →
+</a> */}
+
     </section>
   );
 }

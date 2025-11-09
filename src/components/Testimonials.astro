@@ -1,0 +1,25 @@
+---
+import Slider from "@/components/Slider";
+import { supabase } from "@/supabase";
+
+const { data, error } = await supabase
+  .from("reviews")
+  .select("*")
+  .eq("approved", true)
+  .range(0, 20);
+
+if (error) {
+  console.error("Supabase error fetching reviews:", error);
+}
+---
+
+<section
+  id="testimonials"
+  class="bg-background text-foreground flex flex-col gap-24 relative section-container"
+>
+  <h2 class="head-title"># Happy Clients</h2>
+
+
+    <Slider client:only reviews={data ?? []} />
+
+</section>

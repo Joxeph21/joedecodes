@@ -6,7 +6,7 @@ import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import HireMe from "@/components/HireMe";
-import Testimonials from "@/components/Testimonials";
+import Testimonials from "@/components/Testimonials.astro";
 ---
 
 <Layout>
@@ -19,7 +19,7 @@ import Testimonials from "@/components/Testimonials";
       <About client:only />
       <Projects client:only />
       <Services client:only />
-      <!-- <Testimonials client:only /> -->
+      <Testimonials />
       <HireMe client:only/>
     </section>
   </div>

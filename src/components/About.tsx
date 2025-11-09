@@ -21,6 +21,8 @@ export default function About() {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const statsRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
+  
+
   useGSAP(() => {
     if (!titleRef.current) return;
 
