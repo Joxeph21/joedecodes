@@ -29,7 +29,7 @@ export const USER = {
   ],
   SOCIALS: {
     GITHUB: "https://github.com/Joxeph21",
-    CALENDLY: "",
+    CALENDLY: "https://calendly.com/codewithjoxeph/project-discussion?month=2025-11",
     LINKEDIN: "https://www.linkedin.com/in/joseph-adenugba21/",
     UPWORK: "https://www.upwork.com/freelancers/~0178ebea602c9fd0c5",
     MAIL: "codewithjoxeph@gmail.com",
@@ -170,7 +170,7 @@ export const stats = [
   { label: "Projects Delivered", value: 30, unit: "+" },
   { label: "Satisfied Clients", value: 25, unit: "+" },
   { label: "Code Reviews", value: 150, unit: "+" },
-  { label: "Github Contributions", value: 500, unit: "+" },
+  { label: "Github Contributions", value: 1000, unit: "+" },
 ];
 
 export const techStack = [
