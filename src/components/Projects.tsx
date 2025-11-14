@@ -5,15 +5,22 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PROJECTS } from "@/utils/config";
 import Truncater from "@/components/Truncater";
+import { Icon } from "@iconify/react";
+import { ICON } from "@/utils/icon-export";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Projects() {
+interface ProjectProps {
+  limit?: number;
+}
+
+export default function Projects({ limit }: ProjectProps) {
   const containerRef = useRef<HTMLElement>(null);
   const projectRefs = useRef<Array<HTMLElement | null>>([]);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
-  // track each image's loaded state individually to avoid one image hiding all placeholders
   const [loadedMap, setLoadedMap] = useState<Record<string, boolean>>({});
+
+  const featured = Boolean(limit) ? PROJECTS.slice(0, limit) : PROJECTS;
 
   useGSAP(() => {
     if (!containerRef.current) return;
@@ -39,7 +46,6 @@ export default function Projects() {
       if (!projectEl) return;
 
       const article = projectEl.querySelector("article");
-      const figure = projectEl.querySelector("figure");
 
       if (article) {
         gsap.fromTo(
@@ -58,7 +64,7 @@ export default function Projects() {
         );
       }
     });
-  }, []);
+  }, []); 
 
   return (
     <section
@@ -66,11 +72,18 @@ export default function Projects() {
       id="projects"
       className="bg-background text-foreground flex flex-col gap-24 relative section-container"
     >
-      <h2 ref={titleRef} className="head-title">
-        # Projects
-      </h2>
+      <div className="flex items-center gap-3">
+        {!limit && (
+          <a href="/" className="cursor-pointer text-primary">
+            <Icon icon={ICON.BACK} fontSize={30} />
+          </a>
+        )}
+        <h2 ref={titleRef} className="head-title">
+          # Projects
+        </h2>
+      </div>
 
-      {PROJECTS.map((project, index) => (
+      {featured.map((project, index) => (
         <section
           key={project.title}
           ref={(el: HTMLElement | null) => {
@@ -132,9 +145,11 @@ export default function Projects() {
           </figure>
         </section>
       ))}
-     {/* <a
-  href="/projects"
-  className="
+      {limit && (
+        <a
+          href="/projects"
+          rel="prefetch"
+          className="
     inline-block
     mt-8
     px-6 py-3
@@ -154,10 +169,10 @@ export default function Projects() {
     text-center
     w-fit
   "
->
-  View More Projects →
-</a> */}
-
+        >
+          View More Projects →
+        </a>
+      )}
     </section>
   );
 }

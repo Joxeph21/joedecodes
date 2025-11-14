@@ -1,10 +1,10 @@
-"use client";
-import { useRef, useMemo, useEffect } from "react";
+
+import { useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import Stars from "@/ui/Stars";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TAGS } from "@/utils/config";
+import { TAGS, USER } from "@/utils/config";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -118,10 +118,8 @@ export default function Intro() {
       for (const d of tagData.current) {
         d.x += d.vx;
         d.y += d.vy;
-
         if (d.x <= 0 || d.x + d.w >= cw) d.vx *= -1;
         if (d.y <= 0 || d.y + d.h >= ch) d.vy *= -1;
-
         gsap.set(d.el, { x: d.x, y: d.y });
       }
     };
@@ -138,7 +136,7 @@ export default function Intro() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    console.log(window.location.hash)
+    // console.log(window.location.hash)
 
     const ensureIntroAtTop = () => {
       if (window.location.hash === "#intro" && container.current) {
@@ -162,7 +160,6 @@ export default function Intro() {
     return () => window.removeEventListener("hashchange", ensureIntroAtTop);
   }, []);
 
-  // Hover handlers
   const handleMouseEnter = (i: number) => {
     const tag = tagRefs.current[i];
     const box = infoBoxes.current[i];
@@ -317,7 +314,7 @@ export default function Intro() {
         className="absolute inset-0 flex items-center ml-[10vw]"
       >
         <h1 className="whitespace-nowrap select-none text-[30vh] lg:text-[30vw] font-extrabold uppercase text-white">
-          I am Joseph Adenugba
+          I am {USER.NAME}
         </h1>
       </div>
     </section>

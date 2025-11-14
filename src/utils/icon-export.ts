@@ -2,7 +2,7 @@ export enum ICON {
   MENU = "heroicons-outline:menu-alt-3",
   FLARE = "ic:round-flare",
   CANCEL = "hugeicons:cancel-01",
-
+BACK="cuida:caret-left-outline",
   TAILWIND = "devicon:tailwindcss",
   ASTRO = "material-icon-theme:astro",
   REACT = "material-icon-theme:react",
@@ -42,6 +42,8 @@ export enum ICON {
   UI = "gg:ui-kit",
   SEO = "tabler:seo",
   MOTION = "mdi:motion-outline",
-  MAINTENANCE="icon-park-twotone:setting-web",
-  GITHUB="mdi:github"
+  MAINTENANCE = "icon-park-twotone:setting-web",
+  GITHUB = "mdi:github",
+  INSTAGRAM = "prime:instagram",
+  X = "prime:twitter",
 }

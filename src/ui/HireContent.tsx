@@ -4,27 +4,28 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { Icon } from "@iconify/react";
 import { ICON } from "@/utils/icon-export";
+import { USER } from "@/utils/config";
 
 const socials = [
   {
     name: "Upwork",
     icon: ICON.UPWORK,
-    url: "https://www.upwork.com/freelancers/~0178ebea602c9fd0c5",
+    url: USER.SOCIALS.UPWORK,
   },
   {
     name: "LinkedIn",
     icon: ICON.LINKEDIN2,
-    url: "https://www.linkedin.com/in/joseph-adenugba21/",
+    url: USER.SOCIALS.LINKEDIN,
   },
   {
     name: "Whatsapp",
     icon: ICON.WHATSAPP,
-    url: "https://wa.me/+2349036909765",
+    url: USER.SOCIALS.WHATSAPP,
   },
   {
     name: "Gmail",
     icon: ICON.GMAIL,
-    url: "mailto:codewithjoxeph@gmail.com",
+    url: `mailto:${USER.SOCIALS.MAIL}`,
   },
 ];
 

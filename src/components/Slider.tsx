@@ -1,8 +1,9 @@
 import Marquee from "react-fast-marquee";
-import Card, { type Props } from "@/ui/Card";
-import { Activity, useEffect, useRef, useState } from "react";
+import Card, { renderSocialIcon, type Props } from "@/ui/Card";
+import { Activity, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Icon } from "@iconify/react";
 
 export default function Slider({ reviews }: { reviews: Props[] }) {
   const [selected, setSelected] = useState<Props | null>(null);
@@ -18,7 +19,7 @@ export default function Slider({ reviews }: { reviews: Props[] }) {
         pauseOnHover
         className="w-full p-4"
       >
-        {reviews.slice(0, 5).map((el) => (
+        {reviews.slice(0, 10).map((el) => (
           <Card key={el.id} {...el} open={() => setSelected(el)} />
         ))}
       </Marquee>
@@ -28,7 +29,7 @@ export default function Slider({ reviews }: { reviews: Props[] }) {
         pauseOnHover
         className="w-full p-4"
       >
-        {reviews.slice(-5).map((el) => (
+        {reviews.slice(-10).map((el) => (
           <Card key={el.id} {...el} open={() => setSelected(el)} />
         ))}
       </Marquee>
@@ -95,20 +96,37 @@ function Modal({
         <div className="w-full h-px bg-foreground/10 my-auto mb-3" />
 
         <div className="flex items-center justify-between">
-          <div>
-            <h4 className="text-base text-accent font-medium  capitalize">
-              {selected?.name}
-            </h4>
-            <span className="text-xs text-foreground/50">{selected?.role}</span>
-          </div>
-          <figure className="size-10 rounded-full overflow-hidden border border-foreground/20">
-            <img
-              src={selected?.avatar}
-              alt={`${selected?.name}_avatar`}
-              className="object-cover object-center w-full h-full"
-            />
-          </figure>
-        </div>
+               <div className="flex items-center gap-2">
+                 <figure className="size-10 rounded-full overflow-hidden border border-foreground/20">
+                   <img
+                     src={selected?.avatar}
+                     alt={`${selected?.name}_avatar`}
+                     className="object-cover object-center w-full h-full"
+                   />
+                 </figure>
+                 <div>
+                   <h4 className="text-base group-hover:text-accent font-medium text-foreground capitalize">
+                     {selected?.name.toLowerCase()}
+                   </h4>
+                   <span className="text-xs text-foreground/50">{selected?.role}</span>
+                 </div>
+                   </div>
+       
+                 {selected?.socials && (
+                   <div className="flex items-center gap-2">
+                     {selected?.socials.map((link) => (
+                       <a
+                         href={link.url}
+                         key={link.name}
+                         target="_blank"
+                         className="cursor-pointer hover:text-white text-foreground"
+                       >
+                         <Icon icon={renderSocialIcon(link.name)} fontSize={25} />
+                       </a>
+                     ))}
+                   </div>
+                 )}
+             </div>
       </div>
     </section>
   );

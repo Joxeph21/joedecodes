@@ -3,6 +3,8 @@ import { ICON } from "./icon-export";
 export const USER = {
   TITLE: "",
   NAME: "Joseph Adenugba",
+  TAGLINE: "Your ideas + my code = #NextBigThing",
+  ROLE: "Creative Frontend Developer",
   DESCRIPTION: ` Hi, I'm Joseph Adenugba (Joe), i'm a frontend developer with over 4
             years of experience in building user-friendly web applications. I am
             passionate about what i do and always eager to learn new
@@ -25,6 +27,14 @@ export const USER = {
     "Frontend web developer",
     "Problem Solver",
   ],
+  SOCIALS: {
+    GITHUB: "https://github.com/Joxeph21",
+    CALENDLY: "",
+    LINKEDIN: "https://www.linkedin.com/in/joseph-adenugba21/",
+    UPWORK: "https://www.upwork.com/freelancers/~0178ebea602c9fd0c5",
+    MAIL: "codewithjoxeph@gmail.com",
+    WHATSAPP: "https://wa.me/+2349036909765",
+  }
 };
 
 export const TAGS = [
@@ -112,6 +122,45 @@ export const PROJECTS = [
       "/projects/project3.1.png",
       "/projects/project3.2.png",
       "/projects/project3.3.png",
+    ],
+  },
+  {
+    title: "Tripacash",
+    href: "https://tripacash.com/",
+    description:
+      "Tripacash Ltd is a global African digital banking platform designed to empower Africans at home and abroad with full financial access across currencies, countries, and borders. The company provides a secure, multi-currency ecosystem where users and businesses can hold, send, and receive funds in Naira (₦), Dollar ($), Pound (£), Euro (€), and all major African currencies. Tripacash merges digital wallets, business banking, and borderless remittance into one powerful platform. With features such as Pay by Palm, Pay by Phone Number, FX Swap, and multi-currency business POS, Tripacash redefines what it means to bank as an African — creating freedom, access, and inclusion for every user.",
+    stacks: [
+      "Next JS",
+      "React",
+      "TypeScript",
+      "React Query",
+      "Tailwind",
+    ],
+    images: [
+      "/projects/project5.1.png",
+      "/projects/project5.2.png",
+      "/projects/project5.3.png",
+      "/projects/project5.4.png",
+    ],
+  },
+  {
+    title: "Moviebliz",
+    href: "https://moviebliz.vercel.app/",
+    description:
+      `I developed MovieBliz, a platform for movie lovers to explore films, watch trailers, and view cast and crew details. Users can manage their watchlists, favorites, and create custom lists while engaging with the community through reviews.
+Built with React and JavaScript, the platform uses the TMDB API for movie data and leverages Axios and React Query for efficient data fetching. For a smooth, visually appealing experience, I integrated React Slick for sliders. MovieBliz provides an intuitive design that makes movie discovery fun and keeps users connected to the latest trends`,
+    stacks: [
+      "React",
+      "JavaScript",
+      "React Query",
+      "Tailwind",
+      "Supabase",
+      "TMDB API"
+    ],
+    images: [
+      "/projects/project4.1.png",
+      "/projects/project4.2.png",
+      "/projects/project4.3.png",
     ],
   },
 ];
@@ -241,3 +290,4 @@ export const services = [
     rich: "I offer ongoing support — updates, bug fixes, performance tweaks, and feature additions. I can also set up CI/CD and automation so deployments are smooth and predictable, letting you focus on growing your product.",
   },
 ];
+

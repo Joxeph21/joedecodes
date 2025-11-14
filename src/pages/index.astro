@@ -17,7 +17,7 @@ import Testimonials from "@/components/Testimonials.astro";
     <!-- </section> -->
     <section class=" max-w-[1920px] mx-auto w-full h-full">
       <About client:only />
-      <Projects client:only />
+      <Projects limit={3} client:only  />
       <Services client:only />
       <Testimonials />
       <HireMe client:only/>

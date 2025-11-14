@@ -26,6 +26,7 @@ url= USER.SITE_URL,
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+     <script defer src="/_vercel/insights/script.js"></script>
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -55,5 +56,20 @@ url= USER.SITE_URL,
   </head>
   <body class="text-sm w-full bg-background">
     <slot />
+
+    <script is:load>
+window.addEventListner("wheel", (e) => {
+e.preventDefault();
+
+const slowFactor = 0.2
+
+window.scrollBy({
+  top: e.deltaY + slowFactor,
+  behaviour: "smooth"
+})
+}, {passive: false})
+    </script>
   </body>
+
+  
 </html>

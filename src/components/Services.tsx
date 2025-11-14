@@ -1,4 +1,3 @@
-"use client";
 
 import { services } from "@/utils/config";
 import { Icon } from "@iconify/react";
@@ -30,7 +29,7 @@ export default function Services() {
         trigger: containerRef.current,
         start: "top 20%",
         toggleActions: "play none none reverse",
-        // markers: true
+        // markers: true (Debugging purpose only)
       },
     });
 

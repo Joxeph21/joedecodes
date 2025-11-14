@@ -1,9 +1,7 @@
-"use client";
 
 import { useGSAP } from "@gsap/react";
-import { Icon } from "@iconify/react";
 import gsap from "gsap";
-import React, {
+import  {
   useEffect,
   useRef,
   type PropsWithChildren,

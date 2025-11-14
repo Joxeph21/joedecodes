@@ -1,3 +1,4 @@
+import { USER } from "@/utils/config";
 import { ICON } from "@/utils/icon-export";
 import { useGSAP } from "@gsap/react";
 import { Icon } from "@iconify/react";
@@ -8,15 +9,15 @@ import { useRef } from "react";
 const socials = [
   {
     icon: ICON.GITHUB,
-    url: "https://github.com/Joxeph21",
+    url: USER.SOCIALS.GITHUB,
   },
   {
     icon: ICON.LINKEDIN2,
-    url: "https://www.linkedin.com/in/joseph-adenugba21/",
+    url: USER.SOCIALS.LINKEDIN,
   },
   {
     icon: ICON.WHATSAPP,
-    url: "https://wa.me/+2349036909765",
+    url: USER.SOCIALS.WHATSAPP,
   },
 ];
 
@@ -94,16 +95,7 @@ export default function Nav({
     { dependencies: [navOpen] }
   );
 
-  //   const handleClose = () => {
-  //     gsap.to("#navbar", {
-  //       yPercent: -100,
-  //       opacity: 0,
-  //       scale: 0.8,
-  //       duration: 0.5,
-  //       ease: "power2.in",
-  //       onComplete: toggle,
-  //     });
-  //   };
+
 
   const handleClose = () => {
     if (tl.current) {

@@ -20,9 +20,7 @@ export default function About() {
   const pRef = useRef<HTMLParagraphElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const statsRefs = useRef<Record<number, HTMLDivElement | null>>({});
-
-  
-
+const role = USER.ROLE.split(" ")
   useGSAP(() => {
     if (!titleRef.current) return;
 
@@ -153,19 +151,21 @@ export default function About() {
             ref={h3Ref}
             className="text-4xl lg:text-6xl font-extrabold uppercase text-foreground text-wrap"
           >
-            <span className="text-primary">Creative</span> <br /> frontend{" "}
-            <br /> developer
+            <span className="text-primary">
+              {role[0]}</span> 
+              <br /> {role[1]}
+            <br /> {role[2]}
           </h3>
 
           <p className="2xl:text-base" ref={pRef}>
             {USER.DESCRIPTION}
           </p>
 
-          <span className="uppercase text-xs font-bold text-primary">
-            Your ideas + my code = #NextBigThing
-          </span>
+         {USER.TAGLINE && <span className="uppercase text-xs font-bold text-primary">
+          {USER.TAGLINE}
+          </span>}
 
-          <div className="mt-6 flex items-center justify-center md:justify-start gap-3">
+          <div className="mt-6 flex items-center justify-center lg:justify-start gap-3">
             <a
               href="/cv.pdf"
               download
@@ -175,14 +175,14 @@ export default function About() {
             </a>
             <button
               onClick={() => setStatus("popup")}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#A7F32A] text-black font-semibold rounded-full hover:bg-[#CFFF3A] transition-all transform hover:-translate-y-0.5 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#A7F32A]/40"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-black font-semibold rounded-full hover:bg-[#CFFF3A] transition-all transform hover:-translate-y-0.5 cursor-pointer focus:outline-none focus:ring-4 focus:ring-accent/40"
             >
               Hire Me
             </button>
           </div>
         </article>
 
-        <figure className="mx-auto w-full lg:w-96 overflow-hidden rounded-2xl relative aspect-square">
+        <figure className="mx-auto w-full md:w-96 overflow-hidden rounded-2xl relative aspect-square">
           <img
             ref={imgRef}
             src="/user.jpg"

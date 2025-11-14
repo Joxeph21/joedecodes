@@ -1,6 +1,9 @@
+import { ICON } from "@/utils/icon-export";
+import { Icon } from "@iconify/react";
 import gsap from "gsap";
 import { useRef } from "react";
 
+type SOCIALS = "linkedin" | "x" | "instagram";
 export interface Props {
   id: number;
   createdAt: string;
@@ -9,11 +12,21 @@ export interface Props {
   avatar: string;
   content: string;
   open: () => void;
+  socials?: { name: SOCIALS; url: string }[];
 }
 
+export const renderSocialIcon = (type: SOCIALS) => {
+  switch (type) {
+    case "linkedin":
+      return ICON.LINKEDIN;
+    case "x":
+      return ICON.X;
+    case "instagram":
+      return ICON.INSTAGRAM;
+  }
+};
 export default function Card(props: Props) {
   const cardRef = useRef<HTMLDivElement | null>(null);
-
 
 
   return (
@@ -42,19 +55,36 @@ export default function Card(props: Props) {
       <div className="w-full h-px bg-foreground/10 my-auto mb-3" />
 
       <div className="flex items-center justify-between">
-        <div>
-          <h4 className="text-base group-hover:text-accent font-medium text-foreground capitalize">
-            {props.name}
-          </h4>
-          <span className="text-xs text-foreground/50">{props.role}</span>
-        </div>
-        <figure className="size-10 rounded-full overflow-hidden border border-foreground/20">
-          <img
-            src={props.avatar}
-            alt={`${props.name}_avatar`}
-            className="object-cover object-center w-full h-full"
-          />
-        </figure>
+        <div className="flex items-center gap-2">
+          <figure className="size-10 rounded-full overflow-hidden border border-foreground/20">
+            <img
+              src={props.avatar}
+              alt={`${props.name}_avatar`}
+              className="object-cover object-center w-full h-full"
+            />
+          </figure>
+          <div>
+            <h4 className="text-base group-hover:text-accent font-medium text-foreground capitalize">
+              {props.name.toLowerCase()}
+            </h4>
+            <span className="text-xs text-foreground/50">{props.role}</span>
+          </div>
+            </div>
+
+          {props.socials && (
+            <div className="flex items-center gap-2">
+              {props.socials.map((link) => (
+                <a
+                  href={link.url}
+                  key={link.name}
+                  target="_blank"
+                  className="cursor-pointer hover:text-white text-foreground"
+                >
+                  <Icon icon={renderSocialIcon(link.name)} fontSize={25} />
+                </a>
+              ))}
+            </div>
+          )}
       </div>
     </div>
   );

@@ -1,0 +1,9 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Featured from "@/components/Projects";
+
+---
+
+<Layout title="Portfolio | Projects" description="A showcase of all fetaured projects, including client, personal and side projects">
+    <Featured client:only />
+</Layout>
