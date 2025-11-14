@@ -30,7 +30,7 @@ export default function HireMe() {
 
             <div className="mt-8 flex items-center justify-center flex-col md:flex-row w-fit mx-auto relative gap-4">
               <a
-                href={USER.SOCIALS.UPWORK}
+                href={USER.SOCIALS.CALENDLY}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center cursor-pointer px-6 py-3 rounded-full bg-white text-background font-semibold shadow hover:-translate-y-0.5 transition-transform focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
