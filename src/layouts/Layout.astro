@@ -57,15 +57,15 @@ url= USER.SITE_URL,
   <body class="text-sm w-full bg-background">
     <slot />
 
-    <script is:load>
-window.addEventListner("wheel", (e) => {
+    <script>
+window.addEventListener("wheel", (e) => {
 e.preventDefault();
 
-const slowFactor = 0.2
+const slowFactor = 0.5
 
 window.scrollBy({
   top: e.deltaY + slowFactor,
-  behaviour: "smooth"
+  behavior: "smooth"
 })
 }, {passive: false})
     </script>
