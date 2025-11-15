@@ -10,11 +10,11 @@ interface Props {
 }
 
 const {
-title= USER.TITLE ?? USER.NAME,
-description= USER.DESCRIPTION,
-image= `${USER.SITE_URL}/user.jpg`,
-url= USER.SITE_URL,
-} = Astro.props
+  title = USER.TITLE ?? USER.NAME,
+  description = USER.DESCRIPTION,
+  image = `${USER.SITE_URL}/user.jpg`,
+  url = USER.SITE_URL,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -26,7 +26,7 @@ url= USER.SITE_URL,
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-     <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -46,30 +46,18 @@ url= USER.SITE_URL,
     <meta name="twitter:image:alt" content={title} />
 
     <meta name="author" content={USER.NAME} />
-  <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow" />
 
-  <!-- Extra font -->
+    <!-- Extra font -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Handlee&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="text-sm w-full bg-background">
     <slot />
-
-    <script>
-window.addEventListener("wheel", (e) => {
-e.preventDefault();
-
-const slowFactor = 0.5
-
-window.scrollBy({
-  top: e.deltaY + slowFactor,
-  behavior: "smooth"
-})
-}, {passive: false})
-    </script>
   </body>
-
-  
 </html>

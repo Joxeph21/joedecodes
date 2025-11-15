@@ -163,6 +163,27 @@ Built with React and JavaScript, the platform uses the TMDB API for movie data a
       "/projects/project4.3.png",
     ],
   },
+  {
+    title: "Idalia Africa",
+    href: "https://idaliaafrica.com/",
+    description:
+      `At Idalia Africa, we believe that Africa’s brightest minds can—and must—contribute meaningfully to global innovation. Our work focuses on building the infrastructure, networks, and opportunities that empower African talent to lead on the world stage.
+
+From virtual lectures delivered by the top 1% of global researchers to internships at the world’s most advanced laboratories, we are fostering a generation of thinkers, builders, and innovators who will shape Africa’s future.`,
+    stacks: [
+      "React",
+      "JavaScript",
+      "React Query",
+      "Tailwind",
+      "GSAP",
+      
+    ],
+    images: [
+      "/projects/project6.1.jpg",
+      "/projects/project6.2.png",
+      "/projects/project6.3.png",
+    ],
+  },
 ];
 
 export const stats = [
