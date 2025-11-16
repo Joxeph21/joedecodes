@@ -164,7 +164,7 @@ If you did that correctly, you should have a supabase table called reviews, you 
 - Upload a default image in it (For users that don't upload images), Get the url and make sure to update the default value of avatars in your reviews table
 
 #### Inserting into Supabase Reviews Table
-- View the [Supabase Docs](), to learn how to connect supabase
+- View the [Supabase Docs](https://supabase.com/docs), to learn how to connect supabase
 - When submitting the form call the snippet below
 
 ```ts
